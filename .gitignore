@@ -1,0 +1,6 @@
+__pycache__/
+weights/
+outputs/
+*.npy
+*.wav
+.DS_Store
