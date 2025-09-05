@@ -2,15 +2,14 @@ import argparse
 import os
 import torch
 
-# This is a lightweight placeholder that demonstrates how to slice weights
-# out of your large checkpoint into the minrepo format. Replace the mapping
-# logic according to your actual checkpoint key structure.
-
+# this maps checkpoint to weights under weights/
+# sample ussage:
+# python export_from_checkpoint.py   --ckpt .../last.ckpt   --out_dir weights
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--ckpt", type=str, required=True, help="Path to big checkpoint (.ckpt or .safetensors)")
-    parser.add_argument("--out_dir", type=str, default="minrepo/weights")
+    parser.add_argument("--out_dir", type=str, default="weights")
     parser.add_argument("--device", type=str, default="cpu")
     args = parser.parse_args()
 

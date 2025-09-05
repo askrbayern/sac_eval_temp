@@ -8,7 +8,7 @@ from einops import rearrange
 from .bottleneck import RoundBottleneck
 from .transformer import SnakeBeta
 
-
+# Structure
 
 class AudioAutoencoder(nn.Module):
     def __init__(self, encoder: nn.Module, decoder: nn.Module, latent_dim: int, downsampling_ratio: int, sample_rate: int, io_channels: int = 1, bottleneck: Optional[nn.Module] = None):
@@ -19,7 +19,7 @@ class AudioAutoencoder(nn.Module):
         self.downsampling_ratio = downsampling_ratio
         self.sample_rate = sample_rate
         self.io_channels = io_channels
-        self.bottleneck = bottleneck
+        self.bottleneck = bottleneck # if it is None, the latent will be continuous values
 
     @torch.no_grad()
     def encode(self, audio: torch.Tensor) -> torch.Tensor:
@@ -33,7 +33,7 @@ class AudioAutoencoder(nn.Module):
         return self.decoder(latents)
 
 
-# ================= Full Oobleck Encoder/Decoder (weight_norm + SnakeBeta) =================
+# ================= Oobleck Encoder/Decoder (weight_norm + SnakeBeta) =================
 
 def WNConv1d(*args, **kwargs):
     return weight_norm(nn.Conv1d(*args, **kwargs))
