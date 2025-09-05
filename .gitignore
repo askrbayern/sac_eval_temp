@@ -1,14 +1,7 @@
-# Ignore sample audio file
 jazz.mp3
-
-# Ignore all generated outputs
 outputs/
- 
-# Ignore model weights and archives
 weights/
 weights.zip
-
-# Ignore Python cache
 __pycache__/
 *.py[cod]
 *$py.class
